@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <title>Ground Overlays</title>
+    <style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+        height: 100%;
+      }
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="map"></div>
+    <script>
+      // This example uses a GroundOverlay to place an image on the map
+      // showing an antique map of Newark, NJ.
+
+      var historicalOverlay;
+
+      function initMap() {
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 15,
+          center: {lat: 38.64, lng: -90.31},
+          mapTypeId: 'satellite'
+        });
+
+        var imageBounds = {
+          north: 38.649315440,
+          south: 38.629436159,
+          east: -90.300487258,
+          west: -90.322591755
+        };
+
+        var overlayOpts = {
+          opacity:0.9
+        };
+
+        historicalOverlay = new google.maps.GroundOverlay(
+            'https://raw.githubusercontent.com/outpw/planets/master/A0934-00006_invert_QGeorefed.png',
+            imageBounds, overlayOpts);
+        historicalOverlay.setMap(map);
+      }
+    </script>
+    <script async defer
+    src="<KEY GOES HERE>"
+    </script>
+  </body>
+</html>
